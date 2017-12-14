@@ -9,6 +9,8 @@
   </head>
   <body ng-controller='MainController as ctrl'>
 
+    <div ng-include="'partials/add-gif.html'"></div>
+
     <div ng-repeat="gif in ctrl.gifs">
       <h3>{{gif.title}}</h3>
       <img src="{{gif.url}}" alt="{{gif.title}} image">
