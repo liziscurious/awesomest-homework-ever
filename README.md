@@ -1,4 +1,3 @@
-# awesomest-homework-ever
+# awesomest-homework-ever by:
 
-
-## Ethan Jobmann
+## Ethan Jobmann & Liz Glanz
