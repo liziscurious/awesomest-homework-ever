@@ -1,12 +1,14 @@
 const express = require('express');
-const router = express.Router();
+const starWars = express.Router();
 
 const Gif    = require('../models/gifs.js');
 
-router.get('/', async (req, res) => {
+starWars.get('/', async (req, res) => {
 
 });
 
-router.post('/', async (req, res) => {
+starWars.post('/', async (req, res) => {
 
 });
+
+module.exports = starWars;
