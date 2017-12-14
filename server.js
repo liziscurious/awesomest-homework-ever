@@ -23,9 +23,9 @@ db.on( 'open' , ()=>{
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// var wbinfoController = require( './controllers/wbinfoController' );
+const gifController = require( './controllers/gifs' );
 
-// app.use( '/wbinfo', wbinfoController );
+app.use( '/gifs', gifController );
 
 app.use( express.static( 'public' ));
 
