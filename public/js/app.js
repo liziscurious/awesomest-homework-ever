@@ -21,5 +21,18 @@ app.controller('MainController', ['$http', function($http) {
 
   ];
 
+  this.newGif = () => {
+    $http({
+      method: 'POST',
+      url: '/gifs',
+      data: this.newGifData
+    }).then(response => {
+      this.gifs.push(response.data);
+      console.log(response.data);
+      this.newGifData = {};
+    }, error => {
+      console.error( error.message );
+    }).catch( err => console.error('Catch: ', err));
+  }
 
 }]);
