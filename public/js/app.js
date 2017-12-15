@@ -5,7 +5,23 @@ app.controller('MainController', ['$http', function($http) {
 
   this.newGifData = {};
 
-  this.gifs = [];
+  this.gifs = {};
+
+  this.getGifs = () => {
+    $http({
+      url: '/gifs',
+      method: 'GET'
+    }).then (
+      ( response )=> {
+        this.gifs = response.data;
+        // console.table(response.data);
+      } ,  ( error ) => {
+        console.log( error.message );
+      }
+    );
+  }
+
+  this.getGifs();
 
   this.newGif = () => {
     $http({
@@ -27,7 +43,7 @@ app.controller('MainController', ['$http', function($http) {
         url   : '/gifs/delete/' + id,
         data  : id
       }).then ( ( data ) => {
-        // this.gifs.splice(); // remove gif
+        this.getGifs();
       } , ( error ) => {
         console.log( error );
       });
