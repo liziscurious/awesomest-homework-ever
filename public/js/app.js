@@ -3,23 +3,50 @@ const app = angular.module('Gifs_App', []);
 app.controller('MainController', ['$http', function($http) {
   // initial state
 
-  this.gifs = [
-    { title: 'Lando',
-    url: 'https://media.giphy.com/media/3ornk7TgUdhjhTYgta/giphy.gif'},
+  this.newGifData = {};
 
-    { title: 'Darth Vader',
-    url: 'https://media.giphy.com/media/ZX6NHzA9Fcddm/giphy.gif'},
+  this.gifs = {};
 
-    { title: 'Trap',
-    url: 'https://media.giphy.com/media/8McNH1aXZnVyE/giphy.gif'},
+  this.getGifs = () => {
+    $http({
+      url: '/gifs',
+      method: 'GET'
+    }).then (
+      ( response )=> {
+        this.gifs = response.data;
+        // console.table(response.data);
+      } ,  ( error ) => {
+        console.log( error.message );
+      }
+    );
+  }
 
-    { title: 'BB-8',
-    url: 'https://media.giphy.com/media/5xaOcLOqNmWHaLeB14I/giphy.gif'},
+  this.getGifs();
 
-    { title: 'Yoda',
-    url: 'https://media.giphy.com/media/yDYAHbqe5DfyM/giphy.gif'}
+  this.newGif = () => {
+    $http({
+      method: 'POST',
+      url: '/gifs',
+      data: this.newGifData
+    }).then(response => {
+      this.gifs.push(response.data);
+      console.log(response.data);
+      this.newGifData = {};
+    }, error => {
+      console.error( error.message );
+    }).catch( err => console.error('Catch: ', err));
+  }
 
-  ];
-
+  this.deleteGif = (id) => {
+    $http({
+        method: 'DELETE',
+        url   : '/gifs/delete/' + id,
+        data  : id
+      }).then ( ( data ) => {
+        this.getGifs();
+      } , ( error ) => {
+        console.log( error );
+      });
+  }
 
 }]);
