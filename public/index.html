@@ -13,7 +13,8 @@
 
     <div ng-repeat="gif in ctrl.gifs">
       <h3>{{gif.title}}</h3>
-      <img src="{{gif.url}}" alt="{{gif.title}} image">
+      <img src={{gif.url}} alt="{{gif.title}} image"><br>
+      <button ng-click="ctrl.deleteGif(gif._id)" class="btn btn-default" type="button">Delete</button>
       <hr>
     </div>
   </body>

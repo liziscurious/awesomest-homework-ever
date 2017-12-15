@@ -23,4 +23,13 @@ starWars.post('/', async (req, res) => {
   }
 });
 
+starWars.delete('/delete/:id', async (req, res) => {
+  try {
+    const delGif = await Gif.findByIdAndRemove( req.params.id );
+    res.status(200).json(delGif);
+  } catch (err) {
+    res.status(400).json({ err: err.message });
+  }
+});
+
 module.exports = starWars;

@@ -3,6 +3,8 @@ const app = angular.module('Gifs_App', []);
 app.controller('MainController', ['$http', function($http) {
   // initial state
 
+  this.newGifData = {};
+
   this.gifs = [
     { title: 'Lando',
     url: 'https://media.giphy.com/media/3ornk7TgUdhjhTYgta/giphy.gif'},
@@ -33,6 +35,18 @@ app.controller('MainController', ['$http', function($http) {
     }, error => {
       console.error( error.message );
     }).catch( err => console.error('Catch: ', err));
+  }
+
+  this.deleteGif = (id) => {
+    $http({
+        method: 'DELETE',
+        url   : '/gifs/delete/' + id,
+        data  : id
+      }).then ( ( data ) => {
+        // this.gifs.splice(); // remove gif
+      } , ( error ) => {
+        console.log( error );
+      });
   }
 
 }]);
