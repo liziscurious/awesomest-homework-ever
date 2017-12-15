@@ -7,19 +7,19 @@ app.controller('MainController', ['$http', function($http) {
 
   this.gifs = {};
 
-  this.currentGif = {};
+  // this.currentGif = {};
 
-  this.toggle = true;
+  // this.toggle = true;
 
-  this.toggleView = () => {
-    this.toggle = !this.toggle;
-    this.currentGif = this.gif._id;
-  };
+  // this.toggleView = () => {
+  //   this.toggle = !this.toggle;
+  //   this.currentGif = this.gif._id;
+  // };
 
-  this.showUpdateForm = (id) => {
-    this.clicked = id;
-    console.log("Is this working?");
-  };
+  // this.showUpdateForm = (id) => {
+  //   this.clicked = id;
+  //   console.log("Is this working?");
+  // };
 
   this.getGifs = () => {
     $http({
@@ -51,10 +51,10 @@ app.controller('MainController', ['$http', function($http) {
     }).catch( err => console.error('Catch: ', err));
   }
 
-  this.updateGif = (gif) => {
+  this.updateGif = (id) => {
     $http({
       method: 'PUT',
-      url: '/gifs/' + gif._id,
+      url: '/gifs/' + id,
       data: this.updatedGifData
     }).then(( data ) => {
       this.updatedGifData = {};
