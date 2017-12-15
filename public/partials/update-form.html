@@ -1,6 +1,5 @@
 <div> Update Your GIF
-  <form class="form-inline" ng-submit="ctrl.updateGif()">
-    <div>Add a new Star Wars Gif</div>
+  <form class="form-inline" ng-submit="ctrl.updateGif(gif._id)">
 
     <div class="form-group">
       <input type="text" placeholder="Title" ng-model="ctrl.updatedGifData.title" />
@@ -10,7 +9,7 @@
       <input type="text" placeholder="url" ng-model="ctrl.updatedGifData.url" />
     </div>
 
-    <button class="btn btn-default" type="submit">Add GIF</button>
+    <button class="btn btn-default" type="submit">Update GIF</button>
 
   </form>
 </div>
