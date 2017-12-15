@@ -23,9 +23,11 @@ db.on( 'open' , ()=>{
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const gifController = require( './controllers/gifs' );
+const gifController = require( './controllers/gifs.js' );
+const seedController = require( './controllers/seedGifs.js')
 
 app.use( '/gifs', gifController );
+app.use( '/seed', seedController);
 
 app.use( express.static( 'public' ));
 
